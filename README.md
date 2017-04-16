@@ -13,6 +13,7 @@ Twitter Bootstrap v2.* (Optionally, to control bootstrap modal windows)
 ion.js - This is an easy-to-use shell for working with AJAX-requests in OctoberCMS projects.
 
 # Connect
+Add the component before the closing body tag.
 ![ion.js](https://mcmraak.github.io/images/oc-ion-connect.png)
 
 
