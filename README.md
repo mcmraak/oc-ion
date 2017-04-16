@@ -13,100 +13,72 @@ Twitter Bootstrap v2.* (Optionally, to control bootstrap modal windows)
 ion.js - This is an easy-to-use shell for working with AJAX-requests in OctoberCMS projects.
 
 # Connect
-
+![ion.js](https://mcmraak.github.io/images/oc-ion-connect.png)
 
 
 ## API
-
-**DATA** - Источник данных в DOM
+**DATA** - Jquery selector: DOM-elements for data collection.
 ```
 data=.formlogin
 ```
-> Будут собраны все значения с элементов по селектору $(‘.formlogin’) в массив, где ключи массива name=? а значения value=? или text=?
-
-**AJAX** - Адрес узла
+**AJAX** - URL to send an Ajax request
 ```
-ajax=/ajax;
+ajax=/api/v3/myroute;
 ```
-> Данные будут отправлены в узел /ajax
-
-**HTML** - Контейнер для вставки данных
+**HTML** - Jquery selector: Container for returned data
 ```
-html=#WS;
+html=#ContainerForAnswer;
 ```
-> Данные будут вставлены в контейнер по селектору $(‘#WS’) в формате html
-
-**APPEND** - Добавить данные в конец контейнера.
+**APPEND** - Add data to the end of the container.
 ```
-APPEND=#WS;
+APPEND=#ContainerForAnswer;
 ```
 
-**PREPEND** - Добавить данные в начало контейнера.
+**PREPEND** - Add data to the beginning of the container.
 ```
-PREPEND=#WS;
+PREPEND=#ContainerForAnswer;
 ```
 
-**VAL** - Свои переменные которые будут переданы (перекроют DATA при совпадении ключей)
+**VAL** - Its variables that will be transferred (will override DATA if the keys match).
 ```
-val='myvar':'AZAZA','myvar2':123;
+val='foo':123,'bar':'ParamPamPam!';
 ```
-> Добавить переменные в массив DATA
-
-**GET** - Включение в запрос строки GET-Параметров
+**GET** - Enabling a GET Parameter String in a Query
 ```
 get=true;
 ```
-> Если url на странице вида site.ru/foo/bar?page=1&filter=azaza то при использовании данного параметра к url ajax-запроса добавится ?page=1&filter=azaza ( пригодится при пагинации и сохранении параметров фильтра )
-
-**RUN** - Запуск объявленной функции
+**RUN** - Running the declared function (eval)
 ```
 run=myfunc();
 ```
-> Запуск JavaScript-функции или кода, используется обычный eval()
-
-**MODAL** - Открывает модальное окно twitter bootstrap (Если оно есть на странице)
+**MODAL** - Open twitter bootstrap modal window (#MyModal Integrates with the component)
 ```
 modal=#MyModal;
 ```
-> Контент возвращённый функцией AJAX вставляется в модальное окно с указанным id (в контейнер ‘.modal-content’)
-
 ```
 modal=hide;
 ```
-> Все модальные окна (с классом .modal) будут скрыты
+> All modal windows (with the .modal class) will be hidden
 
-**CLEAN** - Очищает значения полей или текст внутри эллеменов по селектору
+**CLEAN** - Clears field values or text within the ellemen by the selector
 ```
 clean=.myfilds;
 ```
-
-**DEBUG** - Отправляет все возвращённые данные в консоль
+**DEBUG** - Sends all the returned data to the console (console.log)
 ```
 debug=true;
 ```
-> Режим отладки, всё что возвращает функция AJAX дублируется в консоль
-
-**TYPE** - Определить нестандартный тип запроса
+**TYPE** - Determine the REST type of the request
 ```
 type=put;
 type=delete;
 ```
-> Возможность для restfull-контроллеров указать тип запроса, по умолчанию post (если нет post-данных то get)
-
-**RELOAD** - Перезагрузить страницу через определённое время
+**RELOAD** - Reload this Page after a certain time
 ```
 reload=2;
 ```
-> Перезагрузит страницу через 2 секунды
-
-#FOR LARAVEL
-
-Для организации CSRF-Защиты запросов, поместите во view следующий тег
-```html
-<meta name="csrf-token" content="{{ csrf_token() }}">
-```
-В результате чего заголовок каждого запроса с данной страницы будет дополнен csrf-токеном.
+> Reloads the page after 2 seconds
 
 ## License
 
-ion.js is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+oc-ion.js is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
