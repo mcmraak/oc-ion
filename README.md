@@ -1,6 +1,7 @@
 ![ion.js](https://mcmraak.github.io/images/ionjs.png)
 
 # ion.js - Simple ajax-wrapper for OctoberCMS(Laravel5)
+### Using simple data attributes api.
 Version: 1.0.1
 
 ## Requirements
