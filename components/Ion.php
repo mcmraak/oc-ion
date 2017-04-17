@@ -14,7 +14,7 @@ class Ion extends ComponentBase
 
     function onRun()
     {
-        $this->addCss('assets/css/ion.css');
+        $this->addCss('assets/css/ion.min.css');
     }
 
     public function defineProperties()

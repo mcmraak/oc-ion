@@ -16,8 +16,8 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'ion',
-            'description' => 'ion.js functioanal',
+            'name'        => 'ion.js',
+            'description' => 'Ajax-wrapper ion',
             'author'      => 'Alexandr Ablizin',
             'icon'        => 'icon-circle-o'
         ];
