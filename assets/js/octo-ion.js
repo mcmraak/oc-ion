@@ -248,7 +248,7 @@ function showSystemMessages()
         this.remove();
     });
 }
-$('#SystemMessages').bind("DOMSubtreeModified",function(){
+$('#SystemMessages').bind('DOMSubtreeModified',function(){
     showSystemMessages();
     var hiddenCmd = $('ion').text();
     if(hiddenCmd){

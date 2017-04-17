@@ -1,4 +1,4 @@
-<?php namespace Mcmraak\Ion\Components;
+<?php namespace AleksandrAblizin\Ion\Components;
 
 use Cms\Classes\ComponentBase;
 
@@ -11,14 +11,10 @@ class Ion extends ComponentBase
             'description' => 'Helper for jQury ajax'
         ];
     }
-
+    
     function onRun()
     {
-        $this->addCss('assets/css/ion.min.css');
-    }
-
-    public function defineProperties()
-    {
-        return [];
+        $this->addCss('assets/css/ion.css');
+        $this->addJs('assets/js/octo-ion.js');
     }
 }

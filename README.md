@@ -16,16 +16,16 @@ ion.js - This is an easy-to-use shell for working with AJAX-requests in OctoberC
 ### HTML
 ```html
 <div>
-<label>Name</label>
+<label>Name</label><br/>
 <input name="name" type="text" class="formdata" />
-<label>Email</label>
+<label>Email</label><br/>
 <input name="email" type="text" class="formdata" />
-<label>Message</label>
+<label>Message</label><br/>
 <textarea class="formdata"></textarea>
-<label>Attachments</label>
+<label>Attachments</label><br/>
 <input name="files" class="formdata" type="file" multiple="">
 </div>
-<button ion="data=.formdata;ajax=/api/v1/feedback/send;prepend=#SystemMessages;" >
+<button ion="data=.formdata;ajax=/api/v1/feedback/send;prepend=#SystemMessages;">Send</button>
 ```
 It will collect the entered data from all elements by the .formdata selector and send it to the URL "/api/v1/feedback/sand" using POST method. The #SystemMessages container is used for pop-up messages and is present by default in the ion component.
 
@@ -67,6 +67,7 @@ function onStart(){
 
 # Connect
 Add the component before the closing body tag.
+
 ![ion.js](https://mcmraak.github.io/images/oc-ion-connect.png)
 
 
