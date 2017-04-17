@@ -11,6 +11,58 @@ Twitter Bootstrap v2.* (Optionally, to control bootstrap modal windows)
 ## Very simple!
 
 ion.js - This is an easy-to-use shell for working with AJAX-requests in OctoberCMS projects.
+## Example
+### HTML
+```html
+<div>
+<label>Name</label>
+<input name="name" type="text" class="formdata" />
+<label>Email</label>
+<input name="email" type="text" class="formdata" />
+<label>Message</label>
+<textarea class="formdata"></textarea>
+<label>Attachments</label>
+<input name="files" class="formdata" type="file" multiple="">
+</div>
+<button ion="data=.formdata;ajax=/api/v1/feedback/send;prepend=#SystemMessages;" >
+```
+It will collect the entered data from all elements by the .formdata selector and send it to the URL "/api/v1/feedback/sand" using POST method. The #SystemMessages container is used for pop-up messages and is present by default in the ion component.
+
+### CMS Page
+```php
+title = "FeedBack handler"
+url = "/api/v1/feedback/send"
+description = "FeedBack handler"
+is_hidden = 0
+==
+<?php
+function onStart(){
+    
+	$name = post('name');
+	$email = post('email');
+	$message = post('message');
+	$uploadedFiles = Input::file();
+	
+	# Some logic...
+	
+	if ($validator->fails())
+    {
+    	$this['alerts'] =  $validator->messages()->all(); // For example
+    } else {
+		# Some logic...
+	}
+	
+?>
+==
+{% if alerts %}
+	{% for alert in alerts %}
+	  <div class="error">{{ alert }}</div>
+	{% endfor %}
+{% else %}
+	<div class="message">Thank you! You will be contacted in the near future.<ion>reload=3;</ion></div>
+{% endif %}
+```
+
 
 # Connect
 Add the component before the closing body tag.
