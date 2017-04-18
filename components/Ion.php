@@ -15,6 +15,6 @@ class Ion extends ComponentBase
     function onRun()
     {
         $this->addCss('assets/css/ion.css');
-        $this->addJs('assets/js/octo-ion.js');
+        $this->addJs('assets/js/octo-ion.min.js');
     }
 }
