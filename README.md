@@ -14,7 +14,7 @@ Twitter Bootstrap v2.* (Optionally, to control bootstrap modal windows)
 ion.js - This is an easy-to-use shell for working with AJAX-requests in OctoberCMS projects.
 ## Example
 ### HTML
-```html
+```
 <div>
 <label>Name</label><br/>
 <input name="name" type="text" class="formdata" />
@@ -30,7 +30,7 @@ ion.js - This is an easy-to-use shell for working with AJAX-requests in OctoberC
 It will collect the entered data from all elements by the .formdata selector and send it to the URL "/api/v1/feedback/sand" using POST method. The #SystemMessages container is used for pop-up messages and is present by default in the ion component.
 
 ### CMS Page
-```php
+```
 title = "FeedBack handler"
 url = "/api/v1/feedback/send"
 description = "FeedBack handler"
@@ -38,21 +38,21 @@ is_hidden = 0
 ==
 <?php
 function onStart(){
-    
+
 	$name = post('name');
 	$email = post('email');
 	$message = post('message');
 	$uploadedFiles = Input::file();
-	
+
 	# Some logic...
-	
+
 	if ($validator->fails())
     {
     	$this['alerts'] =  $validator->messages()->all(); // For example
     } else {
 		# Some logic...
 	}
-	
+
 ?>
 ==
 {% if alerts %}
