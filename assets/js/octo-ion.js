@@ -142,7 +142,10 @@ Ion.prototype = {
         }
 
         if (val && !data) {
-            send = val;
+            var send = new FormData();
+            for (i in val){
+                send.append(i, val[i]);
+            }
         }
 
         if (ajax) {
