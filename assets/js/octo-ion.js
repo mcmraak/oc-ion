@@ -135,8 +135,10 @@ Ion.prototype = {
             send = this.dataParse(data);
         }
 
-        if (val && data) {
-            send = $.extend(send, val);
+       if (val && data) {
+            for (i in val){
+                send.append(i, val[i]);
+            }
         }
 
         if (val && !data) {
