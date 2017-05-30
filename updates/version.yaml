@@ -1,3 +1,4 @@
 1.0.1: First version of ion
 1.0.2: Added examles to README.md
 1.0.3: Fix error of attaching the value of val attribute to the data sent.
+1.0.4: Fix error of send the value attribute without data attribute.
