@@ -119,6 +119,7 @@ Ion.prototype = {
         var clean = this.parseAttr('clean', ac);
         var reload = this.parseAttr('reload', ac);
         var get = this.parseAttr('get', ac);
+        var afterajax = this.parseAttr('afterajax', ac);
 
         if(!type) {
             type = 'post';
@@ -191,6 +192,9 @@ Ion.prototype = {
                     }
                     if(debug) {
                         console.log(html);
+                    }
+                    if(afterajax){
+                        eval(afterajax);
                     }
                 }
             });
