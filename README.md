@@ -106,6 +106,10 @@ get=true;
 ```
 run=myfunc();
 ```
+**AFTERAJAX** - Running the declared function (eval) after ajax success
+```
+afterajax=myfunc();
+```
 **MODAL** - Open twitter bootstrap modal window (#MyModal Integrates with the component)
 ```
 modal=#MyModal;
