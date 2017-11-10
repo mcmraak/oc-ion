@@ -239,7 +239,7 @@ $(document).on('click', '[ion]', function ()
     ion.cmd($(this).attr('ion'));
 });
 
-$(window).load(function () {
+$(window).on('load', function () {
     showSystemMessages();
 });
 
