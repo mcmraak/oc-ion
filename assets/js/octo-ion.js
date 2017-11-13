@@ -3,7 +3,7 @@
  */
 
 function Ion(){
-    this.preloaderSelector;
+    this.preloaderSelector = '#Preloader';
     this.preloaderStartInterval = 700;
 }
 
@@ -14,29 +14,28 @@ Ion.prototype = {
     {
         return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     },
+
     /* ReplaceAll */
     replaceAll: function (find, replace, str)
     {
         return str.replace(new RegExp(this.escapeRegExp(find), 'g'), replace);
     },
-    /* Preloader selector */
+
+    /* Select preloader */
     setPreloader: function(selector)
     {
         this.preloaderSelector = selector;
     },
+
     /* Preloader show */
     preloaderShow: function ()
     {
-        var selector = this.preloaderSelector;
-        if(!selector){
-            this.preloaderSelector = selector = '#Preloader';
-        }
         var si = this.preloaderStartInterval;
-        $(selector).attr("complite", "false");
+        $(this.preloaderSelector).attr("complite", "false");
         setTimeout(function ()
         {
-            if ($(selector).attr("complite") === "false") {
-                $(selector).fadeIn(300);
+            if ($(this.preloaderSelector).attr("complite") === "false") {
+                $(this.preloaderSelector).fadeIn(300);
                 $('body').css('cursor','wait');
             }
         }, si);
@@ -187,8 +186,16 @@ Ion.prototype = {
                     }
                     if(modal) {
                         /* For tw.bootstrap modal */
-                        $(modal+' .modal-content').html(html);
-                        $(modal).modal('show');
+                       // var
+                        if(modal == 'ion'){
+
+
+                            console.log('show ion-modal');
+
+                        } else {
+                            $(modal+' .modal-content').html(html);
+                            $(modal).modal('show');
+                        }
                     }
                     if(debug) {
                         console.log(html);
@@ -257,10 +264,16 @@ function showSystemMessages()
         this.remove();
     });
 }
-$('#SystemMessages').bind('DOMSubtreeModified',function(){
-    showSystemMessages();
-    var hiddenCmd = $('ion').text();
-    if(hiddenCmd){
-        ion.cmd(hiddenCmd);
-    }
+var observer = new MutationObserver(function( mutations ) {
+    mutations.forEach(function( mutation ) {
+        var newNodes = mutation.addedNodes;
+        if( newNodes !== null ) {
+            showSystemMessages();
+        }
+    });
+});
+observer.observe($('#SystemMessages')[0], {
+    attributes: true,
+    childList: true,
+    characterData: true
 });

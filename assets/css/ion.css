@@ -36,6 +36,36 @@
         margin-right: 10px;
     }
 }
+.ion-modal[template] {
+    display: none;
+}
+.ion-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #00000017;
+    z-index: 10000;
+}
+
+.ion-modal-wrap {
+    background: #fff;
+    padding: 20px;
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+.ion-modal-header {
+    margin-bottom: 20px;
+}
+.ion-modal-title {}
+.ion-modal-close {
+    float: right;
+    margin-top: -30px;
+    cursor: pointer;
+}
+.ion-modal-body {}
 
 #SystemMessagesWrapper {
     position: fixed;
