@@ -60,9 +60,9 @@ Ion.prototype = {
     errorAlert: function (errorMessage)
     {
         $('body').append('<erroralert>'
-        +'<errorclose>Close error message</errorclose>'
-        +errorMessage
-        +'<erroralert>');
+            +'<errorclose>Close error message</errorclose>'
+            +errorMessage
+            +'<erroralert>');
     },
     /* Patse data from inputs, textblocks and file inputs by entering the css selector */
     dataParse: function (selector)
@@ -142,7 +142,7 @@ Ion.prototype = {
             send = this.dataParse(data);
         }
 
-       if (val && data) {
+        if (val && data) {
             for (i in val){
                 send.append(i, val[i]);
             }
@@ -195,6 +195,8 @@ Ion.prototype = {
                         $(prependto).prepend(html);
                     }
                     if(modal) {
+
+                        $('html').css('overflow', 'hidden');
 
                         if(modal === 'ion')
                         {
@@ -266,6 +268,7 @@ $(window).on('load', function () {
 
 $(document).on('click', '#Ion-modal .ionmodal-close', function(){
     $(this).closest('#Ion-modal').fadeOut(100);
+    $('html').css('overflow', 'visible');
 });
 $(document).on('click', 'errorclose', function(){
     $('erroralert').remove();
@@ -276,15 +279,15 @@ $(document).on('click', 'errorclose', function(){
 function showSystemMessages()
 {
     $('#SystemMessages>div')
-    .not('.showed')
-    .addClass('showed')
-    .animate({marginBottom:1000,opasity:0},0)
-    .show()
-    .animate({marginBottom:5,opasity:1},700)
-    .delay(3000)
-    .fadeOut(300,function(){
-        this.remove();
-    });
+        .not('.showed')
+        .addClass('showed')
+        .animate({marginBottom:1000,opasity:0},0)
+        .show()
+        .animate({marginBottom:5,opasity:1},700)
+        .delay(3000)
+        .fadeOut(300,function(){
+            this.remove();
+        });
 }
 var observer = new MutationObserver(function( mutations ) {
     mutations.forEach(function( mutation ) {
