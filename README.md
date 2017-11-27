@@ -2,7 +2,6 @@
 
 # ion.js - Simple ajax-wrapper for OctoberCMS(Laravel5)
 ### Using simple data attributes api.
-Version: 1.0.5
 
 ## Requirements
 
