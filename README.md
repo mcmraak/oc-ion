@@ -106,6 +106,10 @@ get=true;
 ```
 run=myfunc();
 ```
+**BEFOREAJAX** - Running the declared function (eval) before ajax call
+```
+beforeajax=myfunc();
+```
 **AFTERAJAX** - Running the declared function (eval) after ajax success
 ```
 afterajax=myfunc();
@@ -118,6 +122,21 @@ modal=#MyModal;
 modal=hide;
 ```
 > All modal windows (with the .modal class) will be hidden
+```
+modal=ion;
+```
+> Open default modal window
+```
+modal=#Modalwrap>>.modal-content;
+```
+> Open user modal window, example:
+```
+<div id="Modalwrap">
+    <div class=".modal-content">
+        <!-- Content -->
+    </div>
+</div>
+```
 
 **CLEAN** - Clears field values or text within the ellemen by the selector
 ```

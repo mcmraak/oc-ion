@@ -1,3 +1,4 @@
+/* Bootstrap modal */
 #ModalWin .modal-dialog {
     width: 1000px;
 }
@@ -36,36 +37,64 @@
         margin-right: 10px;
     }
 }
-.ion-modal[template] {
+
+/* ion default modal */
+#Ion-modal.ionmodal-wrap {
     display: none;
-}
-.ion-modal {
     position: fixed;
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
+    z-index: 9999;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#Ion-modal .ionmodal-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.7;
+    z-index: 9998;
+}
+#Ion-modal .ionmodal-content {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 1%;
+    align-items: center;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 100%;
+}
+#Ion-modal .ionmodal-close {
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    position: absolute;
     right: 0;
-    bottom: 0;
-    background: #00000017;
-    z-index: 10000;
+    top: 0;
+    text-decoration: none;
+    text-align: center;
+    opacity: 0.65;
+    padding: 0 0 18px 10px;
+    color: #333;
+    font-style: normal;
+    font-size: 28px;
+    font-family: Arial, Baskerville, monospace;
 }
-
-.ion-modal-wrap {
-    background: #fff;
-    padding: 20px;
-    width: 800px;
-    margin: 0 auto;
-    margin-top: 5%;
+#Ion-modal .ionmodal-close:hover, #Ion-modal .ionmodal-close:focus {
+    opacity: 1;
 }
-.ion-modal-header {
-    margin-bottom: 20px;
+#Ion-modal .ionmodal-close:active {
+    top: 1px;
 }
-.ion-modal-title {}
-.ion-modal-close {
-    float: right;
-    margin-top: -30px;
-    cursor: pointer;
-}
-.ion-modal-body {}
 
 #SystemMessagesWrapper {
     position: fixed;
@@ -107,5 +136,21 @@
     border: 2px solid #000;
     border-color: rgb(60, 147, 206);
     margin-bottom: 20%;
+}
+erroralert {
+    color: #fff;
+    background: #f00;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 5px;
+    text-align: center;
+}
+errorclose {
+    display: block;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 6px;
+    margin-bottom: 3px;
 }
 ion {display: none;}

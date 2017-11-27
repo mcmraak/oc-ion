@@ -32,10 +32,11 @@ Ion.prototype = {
     {
         var si = this.preloaderStartInterval;
         $(this.preloaderSelector).attr("complite", "false");
+        var preloader = this.preloaderSelector;
         setTimeout(function ()
         {
-            if ($(this.preloaderSelector).attr("complite") === "false") {
-                $(this.preloaderSelector).fadeIn(300);
+            if ($(preloader).attr("complite") === "false") {
+                $(preloader).fadeIn(300);
                 $('body').css('cursor','wait');
             }
         }, si);
@@ -58,8 +59,8 @@ Ion.prototype = {
     },
     errorAlert: function (errorMessage)
     {
-        $(body).append('<erroralert>'
-        +'<errorclose>x</errorclose>'
+        $('body').append('<erroralert>'
+        +'<errorclose>Close error message</errorclose>'
         +errorMessage
         +'<erroralert>');
     },
@@ -106,7 +107,9 @@ Ion.prototype = {
         }
 
         var data = this.parseAttr('data', ac);
+        var afterajax = this.parseAttr('afterajax', ac);
         var ajax = this.parseAttr('ajax', ac);
+        var beforeajax = this.parseAttr('beforeajax', ac);
         var htmldata = this.parseAttr('html', ac);
         var appendto = this.parseAttr('append', ac);
         var prependto = this.parseAttr('prepend', ac);
@@ -118,7 +121,11 @@ Ion.prototype = {
         var clean = this.parseAttr('clean', ac);
         var reload = this.parseAttr('reload', ac);
         var get = this.parseAttr('get', ac);
-        var afterajax = this.parseAttr('afterajax', ac);
+        var preloader = this.parseAttr('preloader', ac);
+
+        if(preloader) {
+            this.preloaderSelector = preloader;
+        }
 
         if(!type) {
             type = 'post';
@@ -163,6 +170,9 @@ Ion.prototype = {
                 beforeSend: function ()
                 {
                     $this.preloaderShow();
+                    if(beforeajax){
+                        eval(beforeajax);
+                    }
                 },
                 data: send,
                 processData: false,
@@ -170,7 +180,7 @@ Ion.prototype = {
                 error: function (x)
                 {
                     console.log(x);
-                    $('html').html(x.responseText);
+                    $this.errorAlert(x.responseText);
                 },
                 success: function (html)
                 {
@@ -185,13 +195,17 @@ Ion.prototype = {
                         $(prependto).prepend(html);
                     }
                     if(modal) {
-                        /* For tw.bootstrap modal */
-                       // var
-                        if(modal == 'ion'){
 
-
-                            console.log('show ion-modal');
-
+                        if(modal === 'ion')
+                        {
+                            $('#Ion-modal .ionmodal-content').html(html);
+                            $('#Ion-modal').fadeIn(100);
+                            return;
+                        }
+                        if(modal.indexOf('>>')>0){
+                            var params = modal.split('>>');
+                            $(params[1]).html(html);
+                            $(params[0]).fadeIn(100);
                         } else {
                             $(modal+' .modal-content').html(html);
                             $(modal).modal('show');
@@ -248,6 +262,14 @@ $(document).on('click', '[ion]', function ()
 
 $(window).on('load', function () {
     showSystemMessages();
+});
+
+$(document).on('click', '#Ion-modal .ionmodal-close', function(){
+    $(this).closest('#Ion-modal').fadeOut(100);
+});
+$(document).on('click', 'errorclose', function(){
+    $('erroralert').remove();
+    $('body').css('cursor','default');
 });
 
 /* System messages */
