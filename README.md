@@ -6,7 +6,7 @@ Version: 1.0.5
 
 ## Requirements
 
-jQuery v2.*
+jQuery v2+
 Twitter Bootstrap v2.* (Optionally, to control bootstrap modal windows)
 
 ## Very simple!
@@ -122,14 +122,17 @@ modal=#MyModal;
 modal=hide;
 ```
 > All modal windows (with the .modal class) will be hidden
+
 ```
 modal=ion;
 ```
 > Open default modal window
+
 ```
 modal=#Modalwrap>>.modal-content;
 ```
 > Open user modal window, example:
+
 ```
 <div id="Modalwrap">
     <div class=".modal-content">
